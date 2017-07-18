@@ -224,3 +224,8 @@
 .handle.active:after{
   transform: translateY(85px);
 }
+
+
+.machine-wrapper{
+    cursor: pointer;
+}
