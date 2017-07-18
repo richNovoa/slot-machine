@@ -4,19 +4,29 @@ window.raf = (function(){
 })();
 /*--------------=== Slot machine definition ===--------------*/
 (function() {
+  //rwd width
+  var rwdWidth = 300;
+  if(window.innerWidth < 768){
+    rwdWidth = 300;
+  }else if(window.innerWidth >= 768 && window.innerWidth < 992){
+    rwdWidth = 500;
+  }else if(window.innerWidth >= 992){
+    rwdWidth = 600;
+  }
+
   var NAME        = "SlotMachine",
   defaultSettings = {
-    width           : "600",
-    height          : "600",
+    width           : rwdWidth,
+    height          : "300",
     colNum          : 3,
     rowNum          : 12,
-    winRate         : 30,
+    winRate         : 99,
     autoPlay        : false,
-    autoSize        : true,
+    autoSize        : false,
     autoPlayTime    : 10,
     layout          : 'compact',
     handleShow      : true,
-    handleWidth     : 35,
+    handleWidth     : 60,
     handleHeight    : 30,
     machineBorder   : 15,
     machineColor    : 'rgba(120,60,30,1)',
@@ -35,7 +45,7 @@ window.raf = (function(){
   completed       = true,
   isShuffle       = true,
   supportTouch    = 'ontouchstart' in window || navigator.msMaxTouchPoints,
-  firstTime       = true,
+  firstTime       = false,
   nextLoop        = null ;
   SlotMachine = function (argument) {
     this.init = this.init.bind(this);
@@ -146,9 +156,11 @@ window.raf = (function(){
         });
       }
     }
+    //拿掉因為它會依照 window.innerHeight 改變機器位置
     settingStyle += getStyle(".machine",{
-      "margin-top"          : (window.innerHeight - this.options.height)/2 +"px",
-      "margin-left"         : (window.innerWidth - this.options.width)/2 +"px"
+         "margin-top"          : "6px",
+      // "margin-top"          : (window.innerHeight - this.options.height)/2 +"px",
+      // "margin-left"         : (this.options.width)/2 +"px"
     });
     settingStyle += getStyle(".slot-container",{
       "height"              : this.options.height+"px",
@@ -203,11 +215,11 @@ window.raf = (function(){
         //timer = setTimeout(function(){that.init(BannerFlow);that.beforeRun()},500)
       });
       if (supportTouch) {
-        window.addEventListener("touchstart",function(){
+        document.getElementById("machine-wrapper").addEventListener("touchstart",function(){
           that.beforeRun();
         });
       } else {
-        window.addEventListener("click",function(){
+        document.getElementById("machine-wrapper").addEventListener("click",function(){
           that.beforeRun();
         });
       }
@@ -243,7 +255,7 @@ window.raf = (function(){
     if(isShuffle) shuffle(this.arr);
     for(var i=0; i<this.arr.length*this.loop;i++){
       var row = document.createElement("div");
-      row.className = "row "+this.arr[i%this.arr.length];
+      row.className = "slot-row "+this.arr[i%this.arr.length];
       this.col.appendChild(row);
     }
     this.top = 0;
@@ -262,7 +274,6 @@ window.raf = (function(){
   }
   SlotColumn.prototype.getResult = function(){
     var result = Math.ceil(((this.halfHeight-this.top)%this.colHeight)/this.rowHeight)-1;
-    //console.log(this.top,result,this.arr[result],this.halfHeight,this.colHeight,this.rowHeight);
     return this.arr[result];
   }
   SlotColumn.prototype.run = function(){
@@ -369,7 +380,7 @@ if (typeof BannerFlow != 'undefined') {
         widget.addListener(BannerFlow);
       }
       widget.init(BannerFlow);
-      widget.beforeRun();
+      // widget.beforeRun();
     },500);
   });
 }else {
@@ -379,6 +390,6 @@ if (typeof BannerFlow != 'undefined') {
       widget.addListener();
     }
     widget.init();
-    widget.beforeRun();
+    // widget.beforeRun();
   })
 }

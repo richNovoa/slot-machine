@@ -1,8 +1,4 @@
-*{
-  padding : 0;
-  margin: 0;
-  box-sizing: border-box;
-}
+
 .machine{
   display: inline-block;
   position: relative;
@@ -23,6 +19,7 @@
   background-clip: content-box;
 }
 .slot-container:before{
+  box-sizing: content-box;
   content: '';
   position: absolute;
   width: calc(100% - 40px);
@@ -48,13 +45,13 @@
   width: 100%;
   /*transition: transform 0.2s linear;*/
 }
-.row{
-  border-style: solid;
+.slot-row{
+  /*border-style: solid;
   border-color : #eee;
-  border-width: 2px;
+  border-width: 2px;*/
   /*border-radius : 50%;*/
 }
-.row:after{
+.slot-row:after{
   content: '';
   display: block;
   padding-top: 100%;
@@ -72,7 +69,21 @@
 .bigwin:after     {background-image : url("../img/bigwin.svg");}
 .orange:after     {background-image : url("../img/orange.svg");}
 
-/*.seven:after      {background-image : url(//bannerflow.blob.core.windows.net/resources/seven-6803e6a7-66bb-475d-b201-e2551ac41f77.svg?v=636058905940602803);}
+/*custom image
+.seven:after      {background-image : url("https://placem.at/people?w=200&h=200&random=1");}
+.lemon:after      {background-image : url("https://placem.at/people?w=200&h=200&random=2");}
+.cherry:after     {background-image : url("https://placem.at/people?w=200&h=200&random=3");}
+.watermelon:after {background-image : url("https://placem.at/people?w=200&h=200&random=4");}
+.banana:after     {background-image : url("https://placem.at/people?w=200&h=200&random=5");}
+.bar:after        {background-image : url("https://placem.at/people?w=200&h=200&random=6");}
+.prune:after      {background-image : url("https://placem.at/people?w=200&h=200&random=7");}
+.bigwin:after     {background-image : url("https://placem.at/people?w=200&h=200&random=8");}
+.orange:after     {background-image : url("https://placem.at/people?w=200&h=200&random=9");}
+*/
+
+
+/* original image url
+.seven:after      {background-image : url(//bannerflow.blob.core.windows.net/resources/seven-6803e6a7-66bb-475d-b201-e2551ac41f77.svg?v=636058905940602803);}
 .lemon:after      {background-image : url(//bannerflow.blob.core.windows.net/resources/lemon-427191a8-0a28-43fb-8bf9-6a68df0d8d0d.svg?v=636058905940602803);}
 .cherry:after     {background-image : url(//bannerflow.blob.core.windows.net/resources/cherry-73d79a68-bece-46b2-9f93-fcc4617b6dbc.svg?v=636058905940602803);}
 .watermelon:after {background-image : url(//bannerflow.blob.core.windows.net/resources/watermelon-53668bfb-8cd0-4107-b9be-b2379984b9fb.svg?v=636058905940602803);}
