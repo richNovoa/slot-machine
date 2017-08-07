@@ -2,6 +2,7 @@
 
 NOWnews-api change logs
 
+
 ## [Unreleased]
 ### Added
 - 加入神速計算功能 @npc
