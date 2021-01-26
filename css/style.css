@@ -1,4 +1,10 @@
 
+body {
+  background-color: #224FCD;
+  height: 100vh;
+}
+
+/* slot machine */
 .machine{
   display: inline-block;
   position: relative;
@@ -59,15 +65,15 @@
   background-position: center;
   background-size: cover;
 }
-.seven:after      {background-image : url("../img/seven.svg");}
-.lemon:after      {background-image : url("../img/lemon.svg");}
-.cherry:after     {background-image : url("../img/cherry.svg");}
-.watermelon:after {background-image : url("../img/watermelon.svg");}
-.banana:after     {background-image : url("../img/banana.svg");}
-.bar:after        {background-image : url("../img/bar.svg");}
-.prune:after      {background-image : url("../img/prune.svg");}
-.bigwin:after     {background-image : url("../img/bigwin.svg");}
-.orange:after     {background-image : url("../img/orange.svg");}
+.seven:after      {background-image : url("../img/campero.png");}
+.lemon:after      {background-image : url("../img/mcdonalds.png");}
+.cherry:after     {background-image : url("../img/quedely.png");}
+.watermelon:after {background-image : url("../img/sanmartin.png");}
+.banana:after     {background-image : url("../img/subway.png");}
+.bar:after        {background-image : url("../img/tacobell.png");}
+.prune:after      {background-image : url("../img/vesuvio.png");}
+.bigwin:after     {background-image : url("../img/oky.png");}
+.orange:after     {background-image : url("../img/oky.png");}
 /*..*/
 /*custom image
 .seven:after      {background-image : url("https://placem.at/people?w=200&h=200&random=1");}
@@ -227,4 +233,5 @@
 
 #machine-wrapper{
     cursor: pointer;
+    margin: 0 auto;
 }
